@@ -21,7 +21,7 @@ export default function Contatti() {
             </div>
             <div>
               <div className="font-mono text-[10px] uppercase tracking-widest text-zinc-500 mb-1">Email</div>
-              <div className="font-medium group-hover:text-[#00f5a0] transition-colors">hello@playlog.app</div>
+              <div className="font-medium group-hover:text-[#00f5a0] transition-colors">ConservaLabs@outlook.it</div>
             </div>
           </a>
 

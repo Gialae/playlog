@@ -15,7 +15,10 @@ const geistMono = Geist_Mono({
 export const metadata = {
   title: "PLAYLOG",
   description: "Il tuo diario di gioco personale",
-};
+  icons: {
+    icon: '/favicon.svg',
+  },
+}
 
 export default function RootLayout({ children }) {
   return (
