@@ -1,9 +1,10 @@
 export default function Footer() {
   return (
-    <footer className="border-t border-[#1e1e38] bg-[#080810] px-10 py-12">
+    <footer className="border-t border-[#1e1e38] bg-[#080810] px-5 md:px-10 py-12">
       <div className="max-w-5xl mx-auto">
 
-        <div className="flex items-start justify-between mb-10">
+        {/* Top section */}
+        <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-10 mb-10">
 
           {/* Logo + descrizione */}
           <div className="max-w-xs">
@@ -16,7 +17,7 @@ export default function Footer() {
           </div>
 
           {/* Link */}
-          <div className="flex gap-20">
+          <div className="flex gap-12 md:gap-20">
             <div>
               <p className="font-mono text-[10px] uppercase tracking-widest text-zinc-600 mb-4">Navigazione</p>
               <div className="flex flex-col gap-3">
@@ -38,7 +39,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="flex items-center justify-between pt-8 border-t border-[#1e1e38]">
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 pt-8 border-t border-[#1e1e38]">
           <p className="font-mono text-[10px] text-zinc-600 uppercase tracking-widest">
             © 2026 PLAYLOG — Fatto con ❤️ e Next.js
           </p>

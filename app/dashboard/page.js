@@ -39,11 +39,6 @@ export default function Dashboard() {
     router.push(`/edit/${id}`)
   }
 
-  async function handleToggleShare(id, currentShared) {
-    await supabase.from('games').update({ shared: !currentShared }).eq('id', id)
-    setGames(games.map(g => g.id === id ? { ...g, shared: !currentShared } : g))
-  }
-
   if (!user) return null
 
   const completati = games.filter(g => g.status === 'completato')
@@ -54,17 +49,18 @@ export default function Dashboard() {
   return (
     <main className="min-h-screen bg-[#080810] text-white">
       <Navbar onLogout={handleLogout} />
-      <div className="max-w-5xl mx-auto px-10 pt-40 pb-20">
+      <div className="max-w-5xl mx-auto px-5 md:px-10 pt-28 md:pt-40 pb-20">
 
         <p className="font-mono text-xs tracking-widest text-[#00f5a0] mb-2">// la tua libreria</p>
-        <div className="flex items-end justify-between mb-8">
-          <h1 className="text-7xl font-bold tracking-wide leading-none">Il tuo<br />Profilo</h1>
-          <a href="/add" className="bg-[#00f5a0] text-black font-bold text-sm tracking-widest uppercase px-6 py-3 rounded-lg hover:bg-[#00e090] transition-colors">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-8">
+          <h1 className="text-5xl md:text-7xl font-bold tracking-wide leading-none">Il tuo<br />Profilo</h1>
+          <a href="/add" className="bg-[#00f5a0] text-black font-bold text-sm tracking-widest uppercase px-6 py-3 rounded-lg hover:bg-[#00e090] transition-colors self-start">
             + Aggiungi gioco
           </a>
         </div>
 
-        <div className="grid grid-cols-4 gap-3 mb-16">
+        {/* Stats */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-12">
           {[
             { num: completati.length, label: 'Completati' },
             { num: inCorso.length, label: 'In corso' },
@@ -72,18 +68,19 @@ export default function Dashboard() {
             { num: wishlist.length, label: 'Wishlist' },
           ].map((stat) => (
             <div key={stat.label} className="bg-[#0f0f1a] border border-[#1e1e38] rounded-xl p-4 text-center hover:border-[#00f5a0] transition-colors">
-              <div className="text-4xl font-bold text-[#00f5a0] font-mono">{stat.num}</div>
+              <div className="text-3xl md:text-4xl font-bold text-[#00f5a0] font-mono">{stat.num}</div>
               <div className="text-xs font-mono tracking-widest uppercase text-zinc-500 mt-1">{stat.label}</div>
             </div>
           ))}
         </div>
 
+        {/* In corso */}
         {inCorso.length > 0 && (
           <div className="mb-12">
             <p className="font-mono text-xs tracking-widest text-zinc-500 uppercase mb-4 flex items-center gap-3">
               In corso <span className="flex-1 h-px bg-[#1e1e38]"></span>
             </p>
-            <div className="grid grid-cols-3 gap-5">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
               {inCorso.map((game) => (
                 <GameCard key={game.id} {...game} onDelete={handleDelete} onEdit={handleEdit} />
               ))}
@@ -91,12 +88,13 @@ export default function Dashboard() {
           </div>
         )}
 
+        {/* Completati */}
         {completati.length > 0 && (
           <div className="mb-12">
             <p className="font-mono text-xs tracking-widest text-zinc-500 uppercase mb-4 flex items-center gap-3">
               Completati <span className="flex-1 h-px bg-[#1e1e38]"></span>
             </p>
-            <div className="grid grid-cols-3 gap-5">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
               {completati.map((game) => (
                 <GameCard key={game.id} {...game} onDelete={handleDelete} onEdit={handleEdit} />
               ))}
@@ -104,12 +102,13 @@ export default function Dashboard() {
           </div>
         )}
 
+        {/* Wishlist */}
         {wishlist.length > 0 && (
           <div className="mb-12">
             <p className="font-mono text-xs tracking-widest text-zinc-500 uppercase mb-4 flex items-center gap-3">
               Wishlist <span className="flex-1 h-px bg-[#1e1e38]"></span>
             </p>
-            <div className="grid grid-cols-3 gap-5">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
               {wishlist.map((game) => (
                 <GameCard key={game.id} {...game} onDelete={handleDelete} onEdit={handleEdit} />
               ))}

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <!-- Background -->
+  <rect width="64" height="64" rx="14" fill="#080810"/>
+  <!-- Border -->
+  <rect x="1.5" y="1.5" width="61" height="61" rx="12.5" stroke="#00f5a0" stroke-width="1.5" stroke-opacity="0.4"/>
+  <!-- PL testo grande -->
+  <text x="10" y="46" font-family="monospace" font-weight="900" font-size="38" fill="white">P</text>
+  <text x="33" y="46" font-family="monospace" font-weight="900" font-size="38" fill="#00f5a0">L</text>
+  <!-- CL badge in alto a destra -->
+  <circle cx="52" cy="14" r="10" fill="#00f5a0"/>
+  <text x="52" y="18" font-family="monospace" font-weight="900" font-size="9" fill="#080810" text-anchor="middle">CL</text>
+</svg>

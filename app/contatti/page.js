@@ -15,7 +15,7 @@ export default function Contatti() {
 
         <div className="flex flex-col gap-4">
 
-          <a href="mailto:hello@playlog.app" className="bg-[#0f0f1a] border border-[#1e1e38] rounded-xl p-6 flex items-center gap-5 hover:border-[#00f5a0] transition-colors group">
+          <a href="mailto:ConservaLabs@outlook.it" className="bg-[#0f0f1a] border border-[#1e1e38] rounded-xl p-6 flex items-center gap-5 hover:border-[#00f5a0] transition-colors group">
             <div className="w-12 h-12 rounded-xl bg-[#00f5a0]/10 border border-[#00f5a0]/30 flex items-center justify-center text-2xl flex-shrink-0">
               📧
             </div>
