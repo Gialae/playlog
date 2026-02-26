@@ -15,14 +15,36 @@ export async function GET(req) {
 
     const data = await res.json()
 
-    const games = data.map(g => ({
-      id: `igdb-${g.id}`,
-      title: g.name,
-      genre: g.genres?.[0]?.name || 'Altro',
-      emoji: '🎮',
-    }))
+    const emojiByGenre = {
+      'Role-playing (RPG)': '⚔️',
+      'Action': '👊',
+      'Adventure': '🗺️',
+      'Shooter': '🔫',
+      'Sport': '⚽',
+      'Racing': '🏎️',
+      'Strategy': '♟️',
+      'Puzzle': '🧩',
+      'Horror': '👻',
+      'Platform': '🍄',
+      'Fighting': '🥊',
+      'Simulation': '🎲',
+      'Indie': '🌟',
+      'Arcade': '👾',
+      'Music': '🎵',
+    }
+
+    const games = data.map(g => {
+      const genre = g.genres?.[0]?.name || 'Altro'
+      return {
+        id: `igdb-${g.id}`,
+        title: g.name,
+        genre: genre,
+        emoji: emojiByGenre[genre] || '🎮',
+      }
+    })
 
     return Response.json(games)
+
   } catch (err) {
     return Response.json([])
   }
