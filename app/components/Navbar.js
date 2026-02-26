@@ -32,9 +32,9 @@ export default function Navbar({ onLogout }) {
   <span className="text-xl md:text-2xl tracking-[6px] font-bold text-[#00f5a0]">
     PLAY<span className="text-white">LOG</span>
   </span>
-  <span className="font-mono text-[9px] uppercase tracking-widest text-zinc-600 border border-[#1e1e38] px-1.5 py-0.5 rounded">
-    C.L.
-  </span>
+  <span style={{fontFamily:'monospace', fontSize:'9px', fontWeight:'900', background:'#00f5a0', color:'#080810', padding:'2px 6px', borderRadius:'4px', letterSpacing:'1px'}}>
+  C.L.
+</span>
 </a>
 
         {/* Desktop menu */}
