@@ -22,14 +22,29 @@ export default function AddGame() {
   const supabase = createClient()
   const emojis = ['🎮', '⚔️', '🚀', '🧿', '🤖', '🌌', '🏰', '🌊', '🩸', '🌠', '👾', '🐉']
 
-  async function handleSearch(e) {
-    const val = e.target.value
-    setSearch(val)
-    setSelected(null)
-    if (val.length < 2) { setResults([]); return }
-    const { data } = await supabase.from('game_catalog').select('*').ilike('title', `%${val}%`).limit(6)
-    setResults(data || [])
+async function handleSearch(e) {
+  const val = e.target.value
+  setSearch(val)
+  setSelected(null)
+  if (val.length < 2) { setResults([]); return }
+
+  try {
+    const res = await fetch(`/api/igdb-search?search=${encodeURIComponent(val)}`)
+    const data = await res.json()
+
+    const mappedResults = data.map(game => ({
+      id: game.id,
+      title: game.name,
+      genre: game.genres?.[0]?.name || 'Altro',
+      emoji: '🎮'
+    }))
+
+    setResults(mappedResults)
+  } catch (err) {
+    console.error(err)
+    setResults([])
   }
+}
 
   async function handleSave() {
     setLoading(true)
