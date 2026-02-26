@@ -20,7 +20,7 @@ export default function Navbar({ onLogout }) {
   async function handleLogout() {
     if (onLogout) { onLogout(); return }
     await supabase.auth.signOut()
-    router.push('/')
+    router.push('/login')
   }
 
   return (
